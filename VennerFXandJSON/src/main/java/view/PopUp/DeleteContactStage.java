@@ -1,11 +1,13 @@
 package view.PopUp;
 
 import javafx.geometry.HPos;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -52,17 +54,21 @@ public class DeleteContactStage {
 
         GridPane gridPane = new GridPane();
         gridPane.setAlignment(Pos.CENTER);
-        gridPane.setVgap(25);
-        gridPane.add(label,0,0,2,1);
+        gridPane.setHgap(40);
         gridPane.add(buttonCancel,0,1);
         gridPane.add(buttonConfirm,1,1);
-
-
         GridPane.setHalignment(label, HPos.CENTER);
-        GridPane.setHalignment(buttonCancel, HPos.LEFT);
-        GridPane.setHalignment(buttonConfirm, HPos.RIGHT);
 
-        final Scene newScene = new Scene(gridPane, width, height);
+        BorderPane borderPane = new BorderPane();
+        borderPane.setCenter(label);
+        BorderPane.setAlignment(label, Pos.CENTER);
+
+        borderPane.setBottom(gridPane);
+        BorderPane.setMargin(gridPane, new Insets(0,0,30,0));
+        BorderPane.setMargin(label, new Insets(0,20,0,20));
+        borderPane.setMinSize(width,height);
+
+        final Scene newScene = new Scene(borderPane);
         deleteStage.setScene(newScene);
 
         deleteStage.showAndWait();

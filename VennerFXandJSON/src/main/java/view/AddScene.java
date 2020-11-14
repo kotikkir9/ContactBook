@@ -156,20 +156,34 @@ public class AddScene {
         buttonAdd.setOnAction(e -> {
             ScreenSize.setSize(addScene);
 
-            if(textFieldFirstName.getText().isEmpty() || textFieldLastName.getText().isEmpty()) {
-                new ErrorStage().errorStage("Can't add a contact, because namefield is empty.");
-                return;
-            }
-
             this.firstName = textFieldFirstName.getText();
             this.lastName = textFieldLastName.getText();
 
             Person person = new Person();
-            person.setFirstName(textFieldFirstName.getText());
-            person.setLastName(textFieldLastName.getText());
-            person.setEmail(textFieldEmail.getText());
-            person.setPhoneNumber((textFieldPhoneNumber.getText()));
+
+
+            if(person.setFirstName(textFieldFirstName.getText()) == false) {
+                new ErrorStage().errorStage("Can't add contact. Wrong first name format.");
+                return;
+            }
+
+            if(person.setLastName(textFieldLastName.getText()) == false) {
+                new ErrorStage().errorStage("Can't add contact. Wrong last name format.");
+                return;
+            }
+
+            if(person.setEmail(textFieldEmail.getText()) == false) {
+                new ErrorStage().errorStage("Can't add contact. Wrong email format.");
+                return;
+            }
+
+            if(person.setPhoneNumber((textFieldPhoneNumber.getText())) == false) {
+                new ErrorStage().errorStage("Can't add contact. Wring phone number format.");
+                return;
+            }
+
             person.setBirthDay(birthdayPicker.getValue());
+
 
             ArrayList<String> tempInterestArray = new ArrayList<>();
 

@@ -275,7 +275,6 @@ public class TableViewScene {
             TableRow<Person> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && (! row.isEmpty()) && event.getButton() == MouseButton.PRIMARY) {
-                    System.out.println("FUCK");
                     Person person = row.getItem();
                     new ViewProfileStage().viewProfileStage(person);
                 }
@@ -289,5 +288,4 @@ public class TableViewScene {
 
         return borderPane;
     }
-
 }

@@ -1,6 +1,7 @@
 package view.PopUp;
 
 import javafx.geometry.HPos;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -44,9 +45,10 @@ public class FriendAddedStage {
         gridPane.add(buttonOK,0,1);
         GridPane.setHalignment(label, HPos.CENTER);
         GridPane.setHalignment(buttonOK, HPos.CENTER);
+        gridPane.setMargin(label, new Insets(0,20,0,20));
+        gridPane.setMinSize(width, height);
 
-        Scene newScene = new Scene(gridPane, width, height);
-        contactAddedStage.setScene(newScene);
+        contactAddedStage.setScene(new Scene(gridPane));
 
         contactAddedStage.showAndWait();
     }
